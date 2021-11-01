@@ -1,0 +1,143 @@
+<robot name="momo">
+  <material name="red">
+    <color rgba="1.0 0.0 0.0 1.0"/>
+  </material>
+
+  <link name="base_footprint"/>
+
+  <link name="base_link">
+    <visual name="base_visual">
+      <origin xyz="0 0 0.4125" rpy="0 0 0"/>
+      <geometry>
+        <box size="1.029 0.542 0.615"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_left_link">
+    <visual name="wheel_left_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.305" length="0.030"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_right_link">
+    <visual name="wheel_right_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.305" length="0.030"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="caster_left_link">
+    <visual name="caster_left_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.021" length="0.100"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="caster_wheel_left_link">
+    <visual name="caster_wheel_left_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.080" length="0.030"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="caster_right_link">
+    <visual name="caster_right_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.021" length="0.100"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="caster_wheel_right_link">
+    <visual name="caster_wheel_right_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.080" length="0.030"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.010" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="wheel_left_joint" type="revolute">
+    <limit upper="6.28" lower="-6.28" effort="1000" velocity="1000.00"/>
+    <parent link="base_link"/>
+    <child link="wheel_left_link"/>
+    <origin xyz="-0.1 0.3076 0.305" rpy="-1.57 0 0"/>
+
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="wheel_right_joint" type="revolute">
+    <limit upper="6.28" lower="-6.28" effort="1000" velocity="1000.00"/>
+    <parent link="base_link"/>
+    <child link="wheel_right_link"/>
+    <origin xyz="-0.1 -0.3076 0.305" rpy="-1.57 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="caster_left_joint" type="revolute">
+    <limit upper="6.28" lower="-6.28" effort="1000" velocity="1000.00"/>
+    <parent link="base_link"/>
+    <child link="caster_left_link"/>
+    <origin xyz="0.32 0.21 0.18" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="caster_wheel_left_joint" type="revolute">
+    <limit upper="6.28" lower="-6.28" effort="1000" velocity="1000.00"/>
+    <parent link="caster_left_link"/>
+    <child link="caster_wheel_left_link"/>
+    <origin xyz="-0.05 0 -0.1" rpy="-1.57 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="caster_right_joint" type="revolute">
+    <limit upper="6.28" lower="-6.28" effort="1000" velocity="1000.00"/>
+    <parent link="base_link"/>
+    <child link="caster_right_link"/>
+    <origin xyz="0.32 -0.21 0.18" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="caster_wheel_right_joint" type="revolute">
+    <limit upper="6.28" lower="-6.28" effort="1000" velocity="1000.00"/>
+    <parent link="caster_right_link"/>
+    <child link="caster_wheel_right_link"/>
+    <origin xyz="-0.05 0 -0.1" rpy="-1.57 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Depth camera -->
+  <link name="camera_link">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <visual name="camera_visual">
+      <geometry>
+        <box size="0.03 0.08 0.03"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0 0 1.604" rpy="1.22173  3.14159 1.5708 "/>
+    <!-- 0.349066 -->
+  </joint>
+</robot>

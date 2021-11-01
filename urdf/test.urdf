@@ -1,0 +1,22 @@
+<robot name="mobilerobot">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.13 0.1 0.052"/>
+      </geometry>
+    </visual>
+  </link>
+  <visual name="regulators">
+    <geometry>
+      <box size="0.005 0.065 0.02"/>
+    </geometry>
+    <origin xyz="0.04 0 0.036" rpy="0 0 0"/>
+  </visual>
+  <visual name="connector">
+    <geometry>
+      <box size="0.075 0.016 0.026"/>
+    </geometry>
+    <origin xyz="0 -0.027 0.039" rpy="0 0 0"/>
+  </visual>
+</robot>

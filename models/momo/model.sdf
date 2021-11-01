@@ -1,0 +1,654 @@
+<?xml version='1.0'?>
+<sdf version='1.5'>
+  <model name="momo">
+    <pose>0.0 0.0 0.404 0.0 0.0 0.0</pose>
+
+    <link name="base_footprint"/>
+
+    <link name="base_link">
+
+      <inertial>
+        <pose>0 0 0.1 0 0 0</pose>
+        <inertia>
+          <ixx>2.665</ixx>
+          <iyy>4.562562499999999</iyy>
+          <izz>3.3555625</izz>
+        </inertia>
+        <mass>30.0</mass>
+      </inertial>
+
+      <collision name="base_collision">
+        <pose>0 0 0.1 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.029 0.542 0.815</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="base_visual">
+        <pose>0 0 -0.4075 0 0 0</pose>
+        <!-- <geometry> <box> <size>1.029 0.542 0.815</size> </box> </geometry> -->
+        <geometry>
+          <mesh>
+            <uri>model://momo/meshes/momo_base.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="wheel_left_link">
+      <!-- TODO: あとでinertialを算出してセットすること。 -->
+      <inertial>
+        <pose>-0.1 0.3076 -0.1 -1.57 0 0</pose>
+        <inertia>
+          <ixx>1.8158194e-03</ixx>
+          <ixy>-9.3392e-12</ixy>
+          <ixz>1.04909e-11</ixz>
+          <iyy>3.2922126e-03</iyy>
+          <iyz>5.75694e-11</iyz>
+          <izz>1.8158194e-03</izz>
+        </inertia>
+        <mass>1.0</mass>
+      </inertial>
+
+      <collision name="wheel_left_collision">
+        <pose>-0.1 0.3076 -0.1 -1.57 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.305</radius>
+            <length>0.030</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <!-- This friction pamareter don't contain reliable data!! -->
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+          <!-- <contact> <ode> <soft_cfm>0</soft_cfm> <soft_erp>0.2</soft_erp> <kp>1e+5</kp> <kd>1</kd> <max_vel>0.01</max_vel> <min_depth>0.001</min_depth> </ode> </contact> -->
+        </surface>
+      </collision>
+      <visual name="wheel_left_visual">
+        <pose>-0.1 0.3076 -0.1 0 0 3.14</pose>
+        <geometry>
+          <mesh>
+            <uri>model://momo/meshes/tire.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="wheel_right_link">
+      <!-- TODO: あとでinertialを算出してセットすること。 -->
+      <inertial>
+        <pose>-0.1 -0.3076 -0.1 -1.57 0 0</pose>
+        <inertia>
+          <ixx>1.8158194e-03</ixx>
+          <ixy>-9.3392e-12</ixy>
+          <ixz>1.04909e-11</ixz>
+          <iyy>3.2922126e-03</iyy>
+          <iyz>5.75694e-11</iyz>
+          <izz>1.8158194e-03</izz>
+        </inertia>
+        <mass>1.0</mass>
+      </inertial>
+
+      <collision name="wheel_right_collision">
+        <pose>-0.1 -0.3076 -0.1 -1.57 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.305</radius>
+            <length>0.030</length>
+          </cylinder>
+        </geometry>
+
+        <surface>
+
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+
+      </collision>
+
+      <visual name="wheel_right_visual">
+        <pose>-0.1 -0.3076 -0.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://momo/meshes/tire.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="caster_left_link">
+      <!-- TODO: あとでinertialを算出してセットすること。 -->
+      <inertial>
+        <pose>0.32 0.21 -0.23 0 0 0</pose>
+        <inertia>
+          <ixx>1.8158194e-03</ixx>
+          <ixy>-9.3392e-12</ixy>
+          <ixz>1.04909e-11</ixz>
+          <iyy>3.2922126e-03</iyy>
+          <iyz>5.75694e-11</iyz>
+          <izz>1.8158194e-03</izz>
+        </inertia>
+        <mass>2.8498940e-02</mass>
+      </inertial>
+
+      <collision name="caster_left_collision">
+        <pose>0.32 0.21 -0.23 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.021</radius>
+            <length>0.100</length>
+          </cylinder>
+        </geometry>
+
+        <surface>
+
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+
+      </collision>
+
+      <visual name="caster_left_visual">
+        <pose>0.32 0.21 -0.23 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.021</radius>
+            <length>0.100</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="caster_wheel_left_link">
+      <!-- TODO: あとでinertialを算出してセットすること。 -->
+      <inertial>
+        <pose>0.27 0.23 -0.32 -1.57 0 0</pose>
+        <inertia>
+          <ixx>1.8158194e-03</ixx>
+          <ixy>-9.3392e-12</ixy>
+          <ixz>1.04909e-11</ixz>
+          <iyy>3.2922126e-03</iyy>
+          <iyz>5.75694e-11</iyz>
+          <izz>1.8158194e-03</izz>
+        </inertia>
+        <mass>2.8498940e-02</mass>
+      </inertial>
+
+      <collision name="caster_wheel_left_collision">
+        <pose>0.27 0.23 -0.32 -1.57 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.080</radius>
+            <length>0.030</length>
+          </cylinder>
+        </geometry>
+
+        <surface>
+
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+
+      </collision>
+
+      <visual name="caster_wheel_left_visual">
+        <pose>0.27 0.23 -0.32 -1.57 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.080</radius>
+            <length>0.030</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="caster_right_link">
+      <!-- TODO: あとでinertialを算出してセットすること。 -->
+      <inertial>
+        <pose>0.32 -0.21 -0.23 0 0 0</pose>
+        <inertia>
+          <ixx>1.8158194e-03</ixx>
+          <ixy>-9.3392e-12</ixy>
+          <ixz>1.04909e-11</ixz>
+          <iyy>3.2922126e-03</iyy>
+          <iyz>5.75694e-11</iyz>
+          <izz>1.8158194e-03</izz>
+        </inertia>
+        <mass>2.8498940e-02</mass>
+      </inertial>
+
+      <collision name="caster_right_collision">
+        <pose>0.32 -0.21 -0.23 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.021</radius>
+            <length>0.100</length>
+          </cylinder>
+        </geometry>
+
+        <surface>
+
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+
+      </collision>
+
+      <visual name="caster_right_visual">
+        <pose>0.32 -0.21 -0.23 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.021</radius>
+            <length>0.100</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="caster_wheel_right_link">
+      <!-- TODO: あとでinertialを算出してセットすること。 -->
+      <inertial>
+        <pose>0.27 -0.23 -0.32 -1.57 0 0</pose>
+        <inertia>
+          <ixx>1.8158194e-03</ixx>
+          <ixy>-9.3392e-12</ixy>
+          <ixz>1.04909e-11</ixz>
+          <iyy>3.2922126e-03</iyy>
+          <iyz>5.75694e-11</iyz>
+          <izz>1.8158194e-03</izz>
+        </inertia>
+        <mass>2.8498940e-02</mass>
+      </inertial>
+
+      <collision name="caster_wheel_right_collision">
+        <pose>0.27 -0.23 -0.32 -1.57 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.080</radius>
+            <length>0.030</length>
+          </cylinder>
+        </geometry>
+
+        <surface>
+
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+
+      </collision>
+
+      <visual name="caster_wheel_right_visual">
+        <pose>0.27 -0.23 -0.32 -1.57 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.080</radius>
+            <length>0.030</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="base_joint" type="fixed">
+      <parent>base_footprint</parent>
+      <child>base_link</child>
+      <pose>0.0 0.0 0.010 0 0 0</pose>
+    </joint>
+
+    <joint name="wheel_left_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>wheel_left_link</child>
+      <pose>-0.1 0.3076 -0.1 -1.57 0 0</pose>
+
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <joint name="wheel_right_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>wheel_right_link</child>
+      <pose>-0.1 -0.3076 -0.1 -1.57 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <joint name="caster_left_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>caster_left_link</child>
+      <pose>0.32 0.23 -0.23 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <joint name="caster_wheel_left_joint" type="revolute">
+      <parent>caster_left_link</parent>
+      <child>caster_wheel_left_link</child>
+      <pose>0.27 0.23 -0.32 -1.57 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <joint name="caster_right_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>caster_right_link</child>
+      <pose>0.32 -0.23 -0.23 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <joint name="caster_wheel_right_joint" type="revolute">
+      <parent>caster_right_link</parent>
+      <child>caster_wheel_right_link</child>
+      <pose>0.27 -0.23 -0.32 -1.57 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <!-- プラグインをロードします。 filenameは共有ライブラリのファイル名です。 -->
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <ros>
+        <namespace>/momo</namespace>
+      </ros>
+
+      <!-- 左右の車輪のジョイントを指定します。 このジョイントにアクチュエータが追加され、制御可能になります。 -->
+      <left_joint>wheel_left_joint</left_joint>
+      <right_joint>wheel_right_joint</right_joint>
+      <!-- ロボットのオドメトリの中心となるフレームです。 rviz等でロボットの位置を可視化するときにこのフレームを利用します。 -->
+      <robot_base_frame>base_link</robot_base_frame>
+      <!-- 車輪の間の距離です。 -->
+      <wheel_separation>0.540</wheel_separation>
+      <!-- 車輪の直径です。ホイールの直径（メートル単位）は、デフォルトで0.15mです。 -->
+      <wheel_diameter>0.615</wheel_diameter>
+      <!-- ホイールの加速度（rad / s ^ 2）は、デフォルトで0.0 rad / s ^ 2になります。-->
+      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <!-- ホイールが生成できる最大トルク（Nm）は、デフォルトで5Nmです。 -->
+      <max_wheel_torque>20</max_wheel_torque>
+      <!-- オドメトリフレーム、デフォルトは `odom` -->
+      <odometry_frame>odom</odometry_frame>
+      <!-- オドメトリを計算するロボットフレーム。デフォルトは `base_footprint`です。 -->
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <!-- オドメトリソース、エンコーダの場合は0、WORLDの場合は1、デフォルトはWORLD -->
+      <odometrySource>1</odometrySource>
+      <!-- ホイールリンクの変換を公開するにはtrueに設定する。デフォルト設定はfalse。-->
+      <publish_wheel_tf>true</publish_wheel_tf>
+      <!-- オドメトリを公開するにはtrueに設定する。 -->
+      <publish_odom>true</publish_odom>
+      <!-- オドメトリの変換を公開するにはtrueに設定する。 -->
+      <publish_odom_tf>true</publish_odom_tf>
+
+    </plugin>
+
+    <!-- Depth camera -->
+    <link name="camera_link">
+      <pose>0 0 1.2 0 0.349066 0</pose>
+      <inertial>
+        <mass>0.01</mass>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertia>
+          <ixx>1.8e-7</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.1733e-6</iyy>
+          <iyz>0</iyz>
+          <izz>1.8e-7</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.03 0.08 0.03</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="camera_visual">
+        <geometry>
+          <box>
+            <size>0.03 0.08 0.03</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <sensor type="camera" name="camera">
+        <update_rate>30.0</update_rate>
+        <camera name="head1">
+          <horizontal_fov>1.5708</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>800</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>300</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <!-- Noise is sampled independently per pixel on each frame. That pixel's noise value is added to each of its color channels, which at that point lie in the range [0,1]. -->
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>momo/camera</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+      </sensor>
+
+      <sensor type="depth" name="depth">
+        <update_rate>30.0</update_rate>
+        <camera name="head2">
+          <horizontal_fov>1.51844</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>720</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.5</near>
+            <far>6.0</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <!-- Noise is sampled independently per pixel on each frame. That pixel's noise value is added to each of its color channels, which at that point lie in the range [0,1]. -->
+            <mean>0.0</mean>
+            <stddev>0.07</stddev>
+          </noise>
+        </camera>
+        <plugin name="depth_controller" filename="libgazebo_ros_camera.so">
+          <visualize>true</visualize>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>depth/camera</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+      </sensor>
+
+      <sensor name="imu" type="imu">
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+        <always_on>1</always_on>
+        <update_rate>1000</update_rate>
+        <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+          <topicName>imu</topicName>
+          <bodyName>camera_link</bodyName>
+          <updateRateHZ>10.0</updateRateHZ>
+          <gaussianNoise>0.0</gaussianNoise>
+          <xyzOffset>0 0 0</xyzOffset>
+          <rpyOffset>0 0 0</rpyOffset>
+          <frameName>camera_link</frameName>
+          <initialOrientationAsReference>false</initialOrientationAsReference>
+        </plugin>
+      </sensor>
+
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>camera_link</child>
+      <pose>0 0 1.2 0 0.349066 0</pose>
+    </joint>
+
+    <link name="gps_link">
+      <pose>0 0 10 0 0 0</pose>
+      <sensor name="my_gps" type="gps">
+        <always_on>true</always_on>
+        <update_rate>30</update_rate>
+        <gps>
+          <position_sensing>
+            <horizontal>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+              </noise>
+            </horizontal>
+            <vertical>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+              </noise>
+            </vertical>
+          </position_sensing>
+        </gps>
+        <plugin name="gps_plugin" filename="libgazebo_ros_gps_sensor.so">
+          <ros>
+            <argument>--ros-args --remap ~/out:=gps_data</argument>
+          </ros>
+        </plugin>
+      </sensor>
+    </link>
+
+    <joint name="gps_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>gps_link</child>
+    </joint>
+
+  </model>
+</sdf>
